@@ -1,0 +1,32 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        First f=new First();
+        f.start();
+        try{
+            f.join();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(f.j);
+        Runnable obj=new Second();
+        Thread t=new Thread(obj);
+        t.start();
+    }
+}
+class First extends Thread{
+    int j=0;
+    public void run(){
+        for(int i=0;i<50;i++){
+            j=i;
+        }
+    }
+}
+
+class Second implements Runnable{
+    public void run(){
+        System.out.println("Runnable");
+    }
+}
